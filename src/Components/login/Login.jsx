@@ -1,36 +1,31 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import GoogleSvg from '../../IconsSvg/GoogleSvg/GoogleSvg.svg'
-import FacebookSvg from '../../IconsSvg/FacebookSvg/FacebookSvg.svg'
-import EyeSlash from '../../IconsSvg/EyeSlash/EyeSlash.svg'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import GoogleSvg from '../../IconsSvg/GoogleSvg/GoogleSvg.svg';
+import FacebookSvg from '../../IconsSvg/FacebookSvg/FacebookSvg.svg';
+import EyeSlash from '../../IconsSvg/EyeSlash/EyeSlash.svg';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const [passwordView, setPasswordView] = useState('password')
+  const [passwordView, setPasswordView] = useState('password');
 
   const handlePasswordView = () => {
     passwordView === 'password'
       ? setPasswordView('text')
-      : setPasswordView('password')
-  }
+      : setPasswordView('password');
+  };
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <RegisterContainer>
-<<<<<<< HEAD
-      <div className="login__logo">
-        LOGO
-        <br />o<br />
-        NOMBRE
-      </div>
-=======
->>>>>>> Add: home, login and register
       <h2 className="login__welcome">¡Welcome!</h2>
       <div className="login__text-container">
         <h2 className="text__account">Log in</h2>
         <p className="text__login">
-          New user? <Link className='register__link' to={'/register'}>Create account</Link>
+          New user?{' '}
+          <Link className="register__link" to={'/register'}>
+            Create account
+          </Link>
         </p>
       </div>
 
@@ -50,7 +45,9 @@ const Login = () => {
               />
             </div>
           </div>
-          <button onClick={() => navigate('/')} className="login__btn">LOGIN</button>
+          <button onClick={() => navigate('/')} className="login__btn">
+            LOGIN
+          </button>
         </form>
 
         <div className="login__separator">
@@ -60,35 +57,34 @@ const Login = () => {
         </div>
 
         <div className="loginOptions__buttons">
-          <div className='loginOptions__btn-container'>
+          <div className="loginOptions__btn-container">
             <img src={FacebookSvg} alt="" />
             <p>Continue with Facebook</p>
           </div>
-          <div className='loginOptions__btn-container'>
+          <div className="loginOptions__btn-container">
             <img src={GoogleSvg} alt="" />
             <p>Continue with Google</p>
           </div>
         </div>
       </div>
     </RegisterContainer>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
 
 const RegisterContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 1.2rem;
-<<<<<<< HEAD
-  .login__logo {
+  <<<<<<< HEAD .login__logo {
     margin-top: 0px;
     color: black;
     font-size: 25px;
     align-self: flex-start;
   }
-=======
+  =======
 >>>>>>> Add: home, login and register
   .login__welcome {
     font-weight: 400;
@@ -120,7 +116,7 @@ const RegisterContainer = styled.div`
         display: inline-block;
         position: relative;
         overflow: hidden;
-        transition: color .4s ease;
+        transition: color 0.4s ease;
         ::before {
           content: '';
           position: absolute;
@@ -139,7 +135,7 @@ const RegisterContainer = styled.div`
           height: 2px;
           background-color: #000;
           transform: translate3d(-100%, 0, 0);
-          transition: transform .4s ease;
+          transition: transform 0.4s ease;
         }
         :hover {
           color: #000;
@@ -215,7 +211,7 @@ const RegisterContainer = styled.div`
         background-color: #736e6e;
         color: white;
         width: 200px;
-        padding: 1.2rem .6rem;
+        padding: 1.2rem 0.6rem;
         align-self: center;
         font-size: 20px;
         font-weight: 700;
@@ -261,8 +257,8 @@ const RegisterContainer = styled.div`
         justify-content: space-around;
         align-items: center;
         width: 45%;
-        background: #D9D9D94D;
-        padding: .5rem 1.2rem;
+        background: #d9d9d94d;
+        padding: 0.5rem 1.2rem;
         font-size: 20px;
         border-radius: 20px;
         transition: transform 0.2s ease;
@@ -327,4 +323,4 @@ const RegisterContainer = styled.div`
       }
     }
   }
-`
+`;

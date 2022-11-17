@@ -1,221 +1,213 @@
-import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
-import GoogleSvg from '../../IconsSvg/GoogleSvg/GoogleSvg.svg'
-import FacebookSvg from '../../IconsSvg/FacebookSvg/FacebookSvg.svg'
-import EyeSlash from '../../IconsSvg/EyeSlash/EyeSlash.svg'
-import ErrorCheck from '../../IconsSvg/Checks/error-check.svg'
-import InfoCheck from '../../IconsSvg/Checks/info-check.svg'
-import RightCheck from '../../IconsSvg/Checks/right-check.svg'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import GoogleSvg from '../../IconsSvg/GoogleSvg/GoogleSvg.svg';
+import FacebookSvg from '../../IconsSvg/FacebookSvg/FacebookSvg.svg';
+import EyeSlash from '../../IconsSvg/EyeSlash/EyeSlash.svg';
+import ErrorCheck from '../../IconsSvg/Checks/error-check.svg';
+import InfoCheck from '../../IconsSvg/Checks/info-check.svg';
+import RightCheck from '../../IconsSvg/Checks/right-check.svg';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Register = () => {
   // PARA DARLE LA FUNCION DE MOSTRAR/OCULTAR CONTRASEÑA A LOS BOTONES
 
-  const [passwordView, setPasswordView] = useState('password')
-  const [passwordRepeatView, setPasswordRepeatView] = useState('password')
+  const [passwordView, setPasswordView] = useState('password');
+  const [passwordRepeatView, setPasswordRepeatView] = useState('password');
 
   const handlePasswordView = () => {
     passwordView === 'password'
       ? setPasswordView('text')
-      : setPasswordView('password')
-  }
+      : setPasswordView('password');
+  };
   const handlePasswordRepeatView = () => {
     passwordRepeatView === 'password'
       ? setPasswordRepeatView('text')
-      : setPasswordRepeatView('password')
-  }
+      : setPasswordRepeatView('password');
+  };
 
   // PARA DARLE COLOR A LOS CHECKS DEPENDIENDO DE LA CONTRASEÑA QUE ESTAMOS ESCRIBIENDO
 
-  const [password, setPassword] = useState('')
-  const [repeatedPassword, setRepeatedPassword] = useState('')
-  const [repeatPasswordCheck, setRepeatPasswordCheck] = useState('#000')
+  const [password, setPassword] = useState('');
+  const [repeatedPassword, setRepeatedPassword] = useState('');
+  const [repeatPasswordCheck, setRepeatPasswordCheck] = useState('#000');
   const [checkPasswordRepeatStatus, setCheckPasswordRepeatStatus] = useState({
     xmark: 'hide',
     exclamation: '',
     check: 'hide',
-  })
+  });
 
-  const [lengthIsRigth, setLengthIsRigth] = useState('#000')
+  const [lengthIsRigth, setLengthIsRigth] = useState('#000');
   const [checkLengthStatus, setCheckLengthStatus] = useState({
     xmark: 'hide',
     exclamation: '',
     check: 'hide',
-  })
+  });
 
-  const [containNumbers, setContainNumbers] = useState()
-  const [containCapital, setContainCapital] = useState()
-  const [containSymbol, setContainSymbol] = useState()
+  const [containNumbers, setContainNumbers] = useState();
+  const [containCapital, setContainCapital] = useState();
+  const [containSymbol, setContainSymbol] = useState();
   const [containRequiredCharacters, setContainRequiredCharacters] =
-    useState('#000')
+    useState('#000');
   const [checkCharactersStatus, setCheckCharactersStatus] = useState({
     xmark: 'hide',
     exclamation: '',
     check: 'hide',
-  })
+  });
 
   const checkPassword = (e) => {
-    let currentPassword = e.target.value
-    setPassword(currentPassword)
+    let currentPassword = e.target.value;
+    setPassword(currentPassword);
 
     // PARA VERIFICAR LA LONGITUD CORRECTA
 
     if (currentPassword.length >= 8) {
-      setLengthIsRigth('#007000')
+      setLengthIsRigth('#007000');
       setCheckLengthStatus({
         xmark: 'hide',
         exclamation: 'hide',
         check: '',
-      })
+      });
     } else if (currentPassword.length !== 0) {
-      setLengthIsRigth('#a80000')
+      setLengthIsRigth('#a80000');
       setCheckLengthStatus({
         xmark: '',
         exclamation: 'hide',
         check: 'hide',
-      })
+      });
     } else {
-      setLengthIsRigth('#000')
+      setLengthIsRigth('#000');
       setCheckLengthStatus({
         xmark: 'hide',
         exclamation: '',
         check: 'hide',
-      })
+      });
     }
 
     //PARA VERIFICAR SI TIENE LOS CARACTERES REQUERIDOS
 
-    const numbers = '0123456789'
-    const capitals = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'
-    const symbols = " !#$%&'()*+,-.ªº?¿/:;<=>?@][^_`{|}~"
+    const numbers = '0123456789';
+    const capitals = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ';
+    const symbols = " !#$%&'()*+,-.ªº?¿/:;<=>?@][^_`{|}~";
 
     const containANumber = () => {
       for (let i = 0; i < currentPassword.length; i++) {
         if (numbers.indexOf(currentPassword.charAt(i), 0) !== -1) {
-          return setContainNumbers(true)
+          return setContainNumbers(true);
         }
       }
-      return setContainNumbers(false)
-    }
-    containANumber()
+      return setContainNumbers(false);
+    };
+    containANumber();
 
     const containACapital = () => {
       for (let i = 0; i < currentPassword.length; i++) {
         if (capitals.indexOf(currentPassword.charAt(i), 0) !== -1) {
-          return setContainCapital(true)
+          return setContainCapital(true);
         }
       }
-      return setContainCapital(false)
-    }
-    containACapital()
+      return setContainCapital(false);
+    };
+    containACapital();
 
     const containASymbol = () => {
       for (let i = 0; i < currentPassword.length; i++) {
         if (symbols.indexOf(currentPassword.charAt(i), 0) !== -1) {
-          return setContainSymbol(true)
+          return setContainSymbol(true);
         }
       }
-      return setContainSymbol(false)
-    }
-    containASymbol()
+      return setContainSymbol(false);
+    };
+    containASymbol();
 
     if (currentPassword.length === 0) {
-      setRepeatPasswordCheck('#000')
+      setRepeatPasswordCheck('#000');
       setCheckPasswordRepeatStatus({
         xmark: 'hide',
         exclamation: '',
         check: 'hide',
-      })
+      });
     } else if (currentPassword === repeatedPassword) {
-      setRepeatPasswordCheck('#007000')
+      setRepeatPasswordCheck('#007000');
       setCheckPasswordRepeatStatus({
         xmark: 'hide',
         exclamation: 'hide',
         check: '',
-      })
+      });
     } else {
-      setRepeatPasswordCheck('#a80000')
+      setRepeatPasswordCheck('#a80000');
       setCheckPasswordRepeatStatus({
         xmark: '',
         exclamation: 'hide',
         check: 'hide',
-      })
+      });
     }
-  }
+  };
 
   // CAMBIAR LOS SIMBOLOS SEGÚN EL ESTADO DE LOS CHECKS
 
   useEffect(() => {
     if (password.length === 0) {
-      setContainRequiredCharacters('#000')
+      setContainRequiredCharacters('#000');
       setCheckCharactersStatus({
         xmark: 'hide',
         exclamation: '',
         check: 'hide',
-      })
+      });
     } else if (
       containNumbers === true ||
       containCapital === true ||
       containSymbol === true
     ) {
-      setContainRequiredCharacters('#007000')
+      setContainRequiredCharacters('#007000');
       setCheckCharactersStatus({
         xmark: 'hide',
         exclamation: 'hide',
         check: '',
-      })
+      });
     } else {
-      setContainRequiredCharacters('#a80000')
+      setContainRequiredCharacters('#a80000');
       setCheckCharactersStatus({
         xmark: '',
         exclamation: 'hide',
         check: 'hide',
-      })
+      });
     }
-  }, [containNumbers, containCapital, containSymbol, password])
+  }, [containNumbers, containCapital, containSymbol, password]);
 
   // PARA VERIFICAR LA IGUALDAD DE LAS CONTRASEÑAS
 
   const checkRepeatPassword = (e) => {
-    let repeatPassword = e.target.value
-    setRepeatedPassword(repeatPassword)
+    let repeatPassword = e.target.value;
+    setRepeatedPassword(repeatPassword);
 
     if (repeatPassword.length === 0) {
-      setRepeatPasswordCheck('#000')
+      setRepeatPasswordCheck('#000');
       setCheckPasswordRepeatStatus({
         xmark: 'hide',
         exclamation: '',
         check: 'hide',
-      })
+      });
     } else if (repeatPassword === password) {
-      setRepeatPasswordCheck('#007000')
+      setRepeatPasswordCheck('#007000');
       setCheckPasswordRepeatStatus({
         xmark: 'hide',
         exclamation: 'hide',
         check: '',
-      })
+      });
     } else {
-      setRepeatPasswordCheck('#a80000')
+      setRepeatPasswordCheck('#a80000');
       setCheckPasswordRepeatStatus({
         xmark: '',
         exclamation: 'hide',
         check: 'hide',
-      })
+      });
     }
-  }
+  };
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <RegisterContainer>
-<<<<<<< HEAD
-      <div className="register__logo">
-        LOGO
-        <br />o<br />
-        NOMBRE
-      </div>
-=======
->>>>>>> Add: home, login and register
       <h2 className="register__welcome">¡Welcome!</h2>
       <div className="register__text-container">
         <h2 className="text__account">Create an account</h2>
@@ -328,7 +320,9 @@ const Register = () => {
               <p style={{ color: repeatPasswordCheck }}>Passwords must match</p>
             </div>
           </div>
-          <button onClick={() => navigate('/')} className="create__btn">CREATE AN ACCOUNT</button>
+          <button onClick={() => navigate('/')} className="create__btn">
+            CREATE AN ACCOUNT
+          </button>
         </form>
 
         <div className="register__separator">
@@ -347,24 +341,23 @@ const Register = () => {
         </div>
       </div>
     </RegisterContainer>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;
 
 const RegisterContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 1.2rem;
-<<<<<<< HEAD
-  .register__logo {
+  <<<<<<< HEAD .register__logo {
     margin-top: 0px;
     color: black;
     font-size: 25px;
     align-self: flex-start;
   }
-=======
+  =======
 >>>>>>> Add: home, login and register
   .register__welcome {
     font-weight: 400;
@@ -396,7 +389,7 @@ const RegisterContainer = styled.div`
         display: inline-block;
         position: relative;
         overflow: hidden;
-        transition: color .4s ease;
+        transition: color 0.4s ease;
         ::before {
           content: '';
           position: absolute;
@@ -415,7 +408,7 @@ const RegisterContainer = styled.div`
           height: 2px;
           background-color: #000;
           transform: translate3d(-100%, 0, 0);
-          transition: transform .4s ease;
+          transition: transform 0.4s ease;
         }
         :hover {
           color: #000;
@@ -525,7 +518,7 @@ const RegisterContainer = styled.div`
         border-radius: 10px;
         background-color: #736e6e;
         color: white;
-        padding: 1.2rem .6rem;
+        padding: 1.2rem 0.6rem;
         align-self: center;
         font-size: 20px;
         font-weight: 700;
@@ -617,4 +610,4 @@ const RegisterContainer = styled.div`
       }
     }
   }
-`
+`;
