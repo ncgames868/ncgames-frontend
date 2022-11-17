@@ -18,11 +18,14 @@ const Login = () => {
 
   return (
     <RegisterContainer>
+<<<<<<< HEAD
       <div className="login__logo">
         LOGO
         <br />o<br />
         NOMBRE
       </div>
+=======
+>>>>>>> Add: home, login and register
       <h2 className="login__welcome">¡Welcome!</h2>
       <div className="login__text-container">
         <h2 className="text__account">Log in</h2>
@@ -78,12 +81,15 @@ const RegisterContainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 1.2rem;
+<<<<<<< HEAD
   .login__logo {
     margin-top: 0px;
     color: black;
     font-size: 25px;
     align-self: flex-start;
   }
+=======
+>>>>>>> Add: home, login and register
   .login__welcome {
     font-weight: 400;
     text-align: center;
