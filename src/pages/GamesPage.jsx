@@ -92,9 +92,5 @@ const GamesPage = () => {
     </section>
   )
 }
-<<<<<<< HEAD
-//
-=======
 
->>>>>>> 6e5c27a22cc10995760c53a4ced091599eb8f9b4
 export default GamesPage
