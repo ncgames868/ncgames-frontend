@@ -2,8 +2,9 @@ import { HashRouter, Routes, Route } from 'react-router-dom'
 import { AppContainer } from './AppGlobalStyles';
 import { DefaultFooter } from './Components/footer/default-footer';
 import { DefaultNavbar } from './Components/navbar/default-navbar';
-import Card from './pages/Card';
+import Cart from './pages/Cart';
 import CreateNewPassword from './pages/CreateNewPassword';
+import { DetailPage } from './pages/DetailPage';
 import ForgotPassword from './pages/ForgotPassword';
 import GamesPage from './pages/GamesPage';
 import HomePage from './pages/HomePage';
@@ -24,9 +25,10 @@ function App() {
               <Route path='/login' element={<LoginPage />} />
               <Route path='/forgotPassword' element={<ForgotPassword />} />
               <Route path='/createNewPassword' element={<CreateNewPassword />} />
-              <Route path='/register' element={<RegisterPage />} />              
+              <Route path='/register' element={<RegisterPage />} /> 
+              <Route path='/detail/:id' element={<DetailPage/>} /> 
               <Route element={<ProtectedRoutes />}>
-                <Route path='/cart' element={<Card />} />
+                <Route path='/cart' element={<Cart />} />
                 <Route path='/library' element={<Library />} />
                 <Route path='/purchases' element={<Purchases />} />
               </Route>
