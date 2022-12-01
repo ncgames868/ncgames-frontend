@@ -557,7 +557,7 @@ export const FooterContainer = styled.footer`
       }
     }
   }
-
+`
 export const PaginationContainer = styled.div`        
   .pagination{
     margin-left: auto;
