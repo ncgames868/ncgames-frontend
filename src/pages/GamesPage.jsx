@@ -19,7 +19,7 @@ const GamesPage = () => {
   const [loading, setLoading] = useState(true)
 
   const [search, setSearch] = useState('')
-  const [page, setPage] = useState('1')
+  const [page, setPage] = useState(8)
   const [pagesLength, setPagesLength] = useState(20)
   const [gamesPerPage, setGamesPerPage] = useState(20)
   const [gamesToShow, setGamesToShow] = useState(allGames)
@@ -27,23 +27,34 @@ const GamesPage = () => {
   const inicialElement = 0
   //const finalElement = page * gamePorPage
   const finalElement = gamesPerPage
-  console.log('Page', page)
+  // console.log('Page', page)
 
   useEffect(() => {
     const URL =
       'https://nc8-68backend-production.up.railway.app/games?page=' +
       page +
       (search ? '&search=' + search : '')
+    console.log('URL',URL)
     axios
       .get(URL)
       .then((res) => {
+        res.data.games.forEach((e) => {
+          // console.log(
+          //   'platforms in GamesPage',
+          //   e.name,
+          //   e.platforms,
+          //   'id: ',
+          //   e.id
+          // )
+        })
+
         setAllGames(res.data.games)
         setGamesToShow(res.data.games)
         setLoading(false)
         setPagesLength(res.data.pages)
       })
       .catch((err) => console.log(err.data))
-  }, [search])
+  }, [search, page])
 
   //! Se crea es estado de los juegos a mostrar
 
@@ -92,5 +103,5 @@ const GamesPage = () => {
     </section>
   )
 }
-
+//
 export default GamesPage
