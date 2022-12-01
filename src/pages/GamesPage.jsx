@@ -34,20 +34,11 @@ const GamesPage = () => {
       'https://nc8-68backend-production.up.railway.app/games?page=' +
       page +
       (search ? '&search=' + search : '')
-    console.log('URL',URL)
+
     axios
       .get(URL)
       .then((res) => {
-        res.data.games.forEach((e) => {
-          // console.log(
-          //   'platforms in GamesPage',
-          //   e.name,
-          //   e.platforms,
-          //   'id: ',
-          //   e.id
-          // )
-        })
-
+       
         setAllGames(res.data.games)
         setGamesToShow(res.data.games)
         setLoading(false)
